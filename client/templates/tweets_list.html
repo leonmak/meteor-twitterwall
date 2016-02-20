@@ -1,4 +1,7 @@
 <template name="tweetsList">
+	{{#if noSearchTerm}}
+		<h2>Search something!</h2>
+	{{/if}}
 	{{#each tweets}}
 		{{> tweetsItem}}
 	{{/each}}

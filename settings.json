@@ -1,9 +1,9 @@
 {
   "public": {
+    "apiURL": "http://localhost:9000/api",
     "google_maps_key": "INSERT YOURS"
   },
   "private": {
-    "apiURL": "http://localhost:9000/api", 
     "tw_consumerKey": "INSERT YOURS",
     "tw_consumerSecret": "INSERT YOURS",
     "tw_accessToken": "INSERT YOURS",

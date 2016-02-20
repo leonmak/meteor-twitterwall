@@ -1,13 +1,16 @@
 Meteor.startup(function () {
 
-
-
-  Meteor.call('getLoklakTweets', "friday", Meteor.settings.private.apiURL);
+  // Meteor.call('getLoklakTweets', "friday", Meteor.settings.public.apiURL);
 
 });
 
-Meteor.methods({
+// inserting documents are unused for now,
+// since using REST2DDP and loklak for updating collections
 
+Meteor.methods({
+  clearTweets:function(){
+    Tweets.remove({});
+  },
   // remove documents from Tweet Collection and inserts from loklak api
   getLoklakTweets: function(query, apiURL){
     var loklakURL = apiURL + "/search.json?timezoneOffset=-480&q=" + query;

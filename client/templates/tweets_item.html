@@ -1,7 +1,7 @@
 <template name="tweetsItem">
-	<!-- <a href="https://www.twitter.com/{{user}}"></a> -->
- 	<a href="https://www.twitter.com/{{user}}"><img src="{{picture}}" />{{{userscreen}}}</a>
- 	{{date}}
 
-	{{{tweet}}}
+ 	<a href="https://www.twitter.com/{{user.screen_name}}"><img src="{{user.profile_image_url_https}}" />{{{user.name}}}</a>
+ 	<!-- {{date}} -->
+
+	{{{text}}}
 </template>
