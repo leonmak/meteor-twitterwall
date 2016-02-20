@@ -1,22 +1,64 @@
 Meteor.startup(function () {
 
-  var stream = T.stream('statuses/filter', { track: 'mango' })
-
-  stream.on('tweet', Meteor.bindEnvironment(function (tweet) {
-    var userName = tweet.user.name;
-    var userScreenName = tweet.user.screen_name;
-    var userTweet = tweet.text;
-    var tweetDate = tweet.created_at;
-    var profileImg = tweet.user.profile_image_url;
-
-    console.log(userScreenName + " (" + userName + ")" + " said " + userTweet + " at " + tweetDate);
-    console.log("=======================================");
-    Tweets.insert({user: userName, userscreen: userScreenName, tweet: userTweet, picture: profileImg, date: tweetDate}, function(error){
-      if(error)
-      console.log(error);
-    });
 
 
-  }))
+  Meteor.call('getLoklakTweets', "friday", Meteor.settings.private.apiURL);
+
+});
+
+Meteor.methods({
+
+  // remove documents from Tweet Collection and inserts from loklak api
+  getLoklakTweets: function(query, apiURL){
+    var loklakURL = apiURL + "/search.json?timezoneOffset=-480&q=" + query;
+    HTTP.call( 'GET', loklakURL, {}, function( error, response ) {
+      if ( error ) {
+        console.log( error );
+      } else {
+        console.log( response );
+        Tweets.remove({});
+
+        var statusArr = response.data.statuses;
+        statusArr.forEach(function(tweet){
+          console.log(tweet);
+          var userScreenName = tweet.user.name;
+          var userName = tweet.user.screen_name;
+          var userTweet = tweet.text;
+          var tweetDate = tweet.created_at;
+          var profileImg = tweet.user.profile_image_url_https;
+          var imgArr = tweet.images;
+          Tweets.insert({user: userName, userscreen: userScreenName, tweet: userTweet, picture: profileImg, date: tweetDate, images: imgArr},
+            function(error){
+                if(error)
+                console.log(error);
+          });
+        })
+      }
+    })
+
+  },
+
+  // get tweets using meteor package, requires keys, set in custom_settings.json
+  getTwitterTweets:function(query){
+    var stream = T.stream('statuses/filter', { track: query })
+
+    stream.on('tweet', Meteor.bindEnvironment(function (tweet) {
+      var userScreenName = tweet.user.name;
+      var userName = tweet.user.screen_name;
+      var userTweet = tweet.text;
+      var tweetDate = tweet.created_at;
+      var profileImg = tweet.user.profile_image_url;
+      var imgArr = tweet.images;
+
+      console.log(userScreenName + " (" + userName + ")" + " said " + userTweet + " at " + tweetDate);
+      console.log("=======================================");
+      Tweets.insert({user: userName, userscreen: userScreenName, tweet: userTweet, picture: profileImg, date: tweetDate, images: imgArr}, function(error){
+        if(error)
+        console.log(error);
+      });
+    }))
+
+  }
+
 
 });
