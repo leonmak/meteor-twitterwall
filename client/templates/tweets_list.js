@@ -49,3 +49,9 @@ Template.tweetsList.onCreated(function () {
 // 		}});
 // });
 });
+
+Template.tweetsList.events({
+	"click .fixed-action-btn": function(event, template){
+		 $("#nav-mobile").addClass("out");
+	}
+});

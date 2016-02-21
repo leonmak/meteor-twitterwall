@@ -11,6 +11,10 @@ img.Emoji {
 }
 .side-nav{
     background-color: #FFF5F6;
+        transition: 0.5s;
+}
+.side-nav.out{
+  left: -240px !important;
 }
 @media only screen and (max-width: 992px){
   nav .nav-wrapper a.page-title {
