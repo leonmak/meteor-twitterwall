@@ -12,17 +12,37 @@
 </head>
 
 <template name="main">
+  <header>
+    <nav class="top-nav">
+      <div class="container">
+              <div class="row">
+                <div class="col s12 m10 l9 offset-m1 offset-l3">
+                <div class="nav-wrapper"><a class="page-title">Navbar</a></div>
+              </div></div>
+      </div>
+    </nav>
+    <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="mdi-navigation-menu"></i></a></div>
+    <ul id="nav-mobile" class="side-nav fixed">
+      {{> searchbar}}
+
+    </ul>
+  </header>
+
+
+
   <body>
-    <div class="row">
+    <div class="container">
 
-      <div class="col s3">
-        {{> sidebar}}
+      <div class="row">
+        <div class="col m2 l3">
+          {{> sidebar}}
+        </div>
+
+        <div class="col s12 m10 l9 offset-m1 offset-l3">
+          {{> yield}}
+        </div>
+
       </div>
-
-      <div class="col s9">
-        {{> yield}}
-      </div>
-
     </div>
 
   </body>

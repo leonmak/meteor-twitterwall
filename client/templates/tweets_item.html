@@ -1,5 +1,5 @@
 <template name="tweetsItem">
-  <div class="col s12 m8 l8 offset-l2">
+
     <div class="card-panel grey lighten-5 z-depth-1">
       <div class="row">
         <div class="col s2">
@@ -10,16 +10,16 @@
         </div>
         <div class="col s10">
           <a class="pink-text" href="https://www.twitter.com/{{username}}">
-            {{{userScreen}}}
+            {{{userScreen}}} <small class="grey-text">@({{username}})</small>
           </a>
-            <small>{{created_date}}</small>
+            <small class="grey-text">{{created_date}}</small>
           <p class="black-text">
             {{{tweet}}}
 
           </p>
         </div>
       </div>
-    </div>
+
   </div>
 
 

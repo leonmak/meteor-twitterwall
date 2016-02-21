@@ -32,9 +32,13 @@ Meteor.methods({
         // get tweets from loklak
         Meteor.call("getLoklakTweets", qString, Meteor.settings.public.apiURL, function(er, res){
 
-          var currTweetArr = Tweets.find().fetch();
+          var currTweetArr = Tweets.find({}, {sort: { uDate: -1 }}).fetch();
+console.log(currTweetArr[0]);
+
           if(currTweetArr.length !== 0 ){
-            var mostRecent = currTweetArr[0].uDate;
+            var mostRecentDate = currTweetArr[0].uDate;
+            var mostRecentText = currTweetArr[0].tweet;
+
             // diff
             for (var i = 0; i < res.length; i++) {
               var tweet = res[i];
@@ -46,7 +50,7 @@ Meteor.methods({
               var img = tweet.images[0];
               var unixDate = moment(tweetDate).valueOf();
               // only add newer tweets
-              if( unixDate <= mostRecent) break;
+              if( unixDate <= mostRecentDate || userTweet === mostRecentText) break;
               Tweets.insert({username: userName, userScreen: userScreenName, tweet: userTweet, userPicture: profileImg, date: tweetDate, image: img, uDate:unixDate},
                 function(error){
                   if(error) console.log(error);

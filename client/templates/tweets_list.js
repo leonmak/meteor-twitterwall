@@ -32,7 +32,7 @@ Template.tweetsList.helpers({
 
 Template.tweetsList.onCreated(function () {
 	// polls loklak tweets as REST API and uses as DDP
-	Meteor.call("clearTweets");
+	// Meteor.call("clearTweets");
 	if(Tweets.find().count()===0) Session.set("noSearchTerm", true);
 
 // 	var self = this;

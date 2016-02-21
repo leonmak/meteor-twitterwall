@@ -3,11 +3,46 @@ img.Emoji {
 }
 .card-panel {
     margin: 0;
-    padding: 0;
-    padding-top: 12px;
-    padding-bottom: 6px;
+    padding: 12px 12px 1px 12px;
 
 }
 .circle {
     border-radius: 21%;
+}
+@media only screen and (max-width: 992px){
+  nav .nav-wrapper a.page-title {
+    font-size: 36px !imporant;
+  }
+  nav .nav-wrapper {
+      text-align: center;
+  }
+}
+
+/* Top nav textbox */
+nav.top-nav a.page-title {
+    line-height: 122px;
+    font-size: 48px;
+}
+nav.top-nav {
+    height: 122px;
+    box-shadow: none;
+}
+
+/* Menu */
+a.button-collapse.top-nav.full {
+    line-height: 122px;
+}
+
+a.button-collapse.top-nav {
+    position: absolute;
+    text-align: center;
+    height: 48px;
+    width: 48px;
+    left: 7.5%;
+    top: 0;
+    float: none;
+    margin-left: 1.5rem;
+    color: #fff;
+    font-size: 32px;
+    z-index: 2;
 }
