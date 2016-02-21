@@ -1,7 +1,10 @@
 <template name="tweetsList">
+
+	{{> searchbar}}
 	{{#if noSearchTerm}}
-		<h2>Search something!</h2>
+		<h2 class = "center-align">Search something!</h2>
 	{{/if}}
+
 	{{#each tweets}}
 		{{> tweetsItem}}
 	{{/each}}

@@ -23,3 +23,6 @@ easy:search
 http
 okgrow:rest2ddp
 materialize:materialize
+iron:router
+percolate:synced-cron
+momentjs:moment

@@ -1,1 +1,13 @@
-/* CSS declarations go here */
+img.Emoji {
+    height: 21px;
+}
+.card-panel {
+    margin: 0;
+    padding: 0;
+    padding-top: 12px;
+    padding-bottom: 6px;
+
+}
+.circle {
+    border-radius: 21%;
+}

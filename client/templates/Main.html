@@ -11,10 +11,20 @@
 
 </head>
 
+<template name="main">
+  <body>
+    <div class="row">
 
-<body>
-  {{> searchbar}}
+      <div class="col s3">
+        {{> sidebar}}
+      </div>
 
-  {{> tweetsList}}
+      <div class="col s9">
+        {{> yield}}
+      </div>
 
-</body>
+    </div>
+
+  </body>
+
+</template>

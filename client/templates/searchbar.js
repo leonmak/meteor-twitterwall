@@ -13,21 +13,24 @@ Template.searchbar.events({
       // show the prompt when nothing in search bar
       if(qString.length === 0){
         Session.set("noSearchTerm", true);
-        Meteor.call("clearTweets");
       } else {
         Session.set("noSearchTerm", false);
       }
 
-      // stop the previous autorun computation
-      if(template.comp) template.comp.stop();
-
-      // create the new computation
-      template.comp = template.autorun(function () {
-        template.subscribe('REST2DDP', "loklak-tweets",{variables:{
-          apiURL: Meteor.settings.public.apiURL,
-          queryString: qString
-        }});
-      });
+      // remove all docs in Tweets Collection
+      Meteor.call("clearTweets");
+      Meteor.call("updateTweets", qString);
+      //
+      // // stop the previous autorun computation
+      // if(template.comp) template.comp.stop();
+      //
+      // // create the new computation
+      // template.comp = template.autorun(function () {
+      //   template.subscribe('REST2DDP', "loklak-tweets",{variables:{
+      //     apiURL: Meteor.settings.public.apiURL,
+      //     queryString: qString
+      //   }});
+      // });
 
       // reset the form
       document.getElementById('search').value = '';
