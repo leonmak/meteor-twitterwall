@@ -1,7 +1,7 @@
 REST2DDP.configs.push({
-  name: "loklak-tweets",
-  collectionName: "tweets",
-  jsonPath: "$.statuses.*",
-  pollInterval: 10,
-  restUrl: "${apiURL}/search.json?timezoneOffset=-480&q=${queryString}"
+  name: "loklak-suggest",
+  collectionName: "suggestions",
+  jsonPath: "$.queries.*",
+  pollInterval: 300,
+  restUrl: "${apiURL}/suggest.json?count=5&orderby=messages_per_day&order=desc"
 });

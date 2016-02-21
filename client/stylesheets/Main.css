@@ -9,6 +9,9 @@ img.Emoji {
 .circle {
     border-radius: 21%;
 }
+.side-nav{
+    background-color: #FFF5F6;
+}
 @media only screen and (max-width: 992px){
   nav .nav-wrapper a.page-title {
     font-size: 36px !imporant;
@@ -45,4 +48,8 @@ a.button-collapse.top-nav {
     color: #fff;
     font-size: 32px;
     z-index: 2;
+}
+a.suggestion {
+    margin: 6px;
+    height: 21px;
 }
