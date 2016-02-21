@@ -4,14 +4,14 @@ img.Emoji {
 .card-panel {
     margin: 0;
     padding: 12px 12px 1px 12px;
-
+    transition: 1s;
 }
 .circle {
     border-radius: 21%;
 }
 .side-nav{
     background-color: #FFF5F6;
-        transition: 0.5s;
+        transition: 1s;
 }
 .side-nav.out{
   left: -240px !important;
@@ -57,3 +57,8 @@ a.suggestion {
     margin: 6px;
     height: 21px;
 }
+/* fluid 5 columns */
+.grid-sizer,
+.grid-item { width: 10%; }
+/* 2 columns wide */
+.grid-item--width2 { width: 40%; }

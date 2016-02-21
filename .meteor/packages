@@ -27,3 +27,5 @@ iron:router
 percolate:synced-cron
 momentjs:moment
 u2622:persistent-session
+isotope:isotope
+mrt:jquery-imagesloaded

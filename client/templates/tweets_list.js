@@ -37,7 +37,8 @@ Template.tweetsList.onCreated(function () {
 		Session.set("noSearchTerm", true);
 		Session.set("query", "Just another Twitter Wall");
 	}
-
+	$(".fixed-action-btn").fadeIn();
+	$("#nav-mobile").removeClass("out");
 // 	var self = this;
 // 	var apiURLSettings = Meteor.settings.public.apiURL; // localhost:9000/api
 // console.log(apiURLSettings);
@@ -48,10 +49,4 @@ Template.tweetsList.onCreated(function () {
 // 			queryString: ""
 // 		}});
 // });
-});
-
-Template.tweetsList.events({
-	"click .fixed-action-btn": function(event, template){
-		 $("#nav-mobile").addClass("out");
-	}
 });
