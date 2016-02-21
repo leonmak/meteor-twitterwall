@@ -32,8 +32,14 @@ Meteor.methods({
         // get tweets from loklak
         Meteor.call("getLoklakTweets", qString, Meteor.settings.public.apiURL, function(er, res){
 
+          // no res
+          if(!res.length){
+            Session.set("noSearchTerm", true);
+            Session.set("query", "Search something else!");
+          } else {
+
           var currTweetArr = Tweets.find({}, {sort: { uDate: -1 }}).fetch();
-console.log(currTweetArr[0]);
+          // console.log(currTweetArr[0]);
 
           if(currTweetArr.length !== 0 ){
             var mostRecentDate = currTweetArr[0].uDate;
@@ -61,6 +67,7 @@ console.log(currTweetArr[0]);
           } else {
             Meteor.call("addTweetArr", res);
           }
+        }
         });
       }
     });

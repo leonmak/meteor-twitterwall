@@ -26,3 +26,4 @@ materialize:materialize
 iron:router
 percolate:synced-cron
 momentjs:moment
+u2622:persistent-session

@@ -6,8 +6,8 @@ Template.searchbar.events({
       event.preventDefault();
 
       // update the subscription url of the template
-      var search = document.getElementById('search');
-      var qString = search.value.replace(/ /g, "+");
+      var search = document.getElementById('search').value;
+      var qString = search.replace(/ /g, "+");
       console.log(qString);
 
       // show the prompt when nothing in search bar
@@ -16,6 +16,7 @@ Template.searchbar.events({
       } else {
         Session.set("noSearchTerm", false);
       }
+      Session.setPersistent("query", search);
 
       // remove all docs in Tweets Collection
       Meteor.call("clearTweets");
