@@ -7,11 +7,44 @@ Meteor.methods({
       var userTweet = tweet.text;
       var tweetDate = tweet.created_at;
       var profileImg = tweet.user.profile_image_url_https;
-      var img = tweet.images[0];
-      Tweets.insert({username: userName, userScreen: userScreenName, tweet: userTweet, userPicture: profileImg, date: tweetDate, image: img, uDate:moment(tweetDate).valueOf()},
-        function(error){
+      console.log(tweet);
+
+      var imgs = tweet.images;
+      var links = tweet.links;
+
+      var twitterPic = "";
+      links.forEach(function(link){
+          if(link.substring(8,23) == "pic.twitter.com"){
+              twitterPic = extractMeta(link).image;
+          }
+      });
+      var instaPic = "";
+      imgs.forEach(function(img){
+          if(img.substring(8,25) == "www.instagram.com"){
+              instaPic = extractMeta(img).image;
+          }
+      })
+      var image = "";
+      if(twitterPic){
+          image = twitterPic;
+      } else {
+          image = instaPic;
+      }
+
+      Tweets.insert({
+          username: userName,
+          userScreen: userScreenName,
+          tweet: userTweet,
+          userPicture: profileImg,
+          date: tweetDate,
+          image: image,
+          images: imgs,
+          links: links,
+          uDate: moment(tweetDate).valueOf()
+      },
+      function(error){
           if(error) console.log(error);
-        });
+      });
     });
   },
 
@@ -53,14 +86,45 @@ Meteor.methods({
               var userTweet = tweet.text;
               var tweetDate = tweet.created_at;
               var profileImg = tweet.user.profile_image_url_https;
-              var img = tweet.images[0];
+              var imgs = tweet.images;
+              var links = tweet.links;
               var unixDate = moment(tweetDate).valueOf();
               // only add newer tweets
               if( unixDate <= mostRecentDate || userTweet === mostRecentText) break;
-              Tweets.insert({username: userName, userScreen: userScreenName, tweet: userTweet, userPicture: profileImg, date: tweetDate, image: img, uDate:unixDate},
-                function(error){
+
+              var twitterPic = "";
+              links.forEach(function(link){
+                  if(link.substring(8,23) == "pic.twitter.com"){
+                      twitterPic = extractMeta(link).image;
+                  }
+              });
+              var instaPic = "";
+              imgs.forEach(function(img){
+                  if(img.substring(8,25) == "www.instagram.com"){
+                      instaPic = extractMeta(img).image;
+                  }
+              })
+              var image = "";
+              if(twitterPic){
+                  image = twitterPic;
+              } else {
+                  image = instaPic;
+              }
+
+              Tweets.insert({
+                  username: userName,
+                  userScreen: userScreenName,
+                  tweet: userTweet,
+                  userPicture: profileImg,
+                  date: tweetDate,
+                  image: image,
+                  images: imgs,
+                  links: links,
+                  uDate: unixDate
+              },
+              function(error){
                   if(error) console.log(error);
-                });
+              });
 
             }
 
@@ -101,7 +165,7 @@ Meteor.methods({
 
   },
 
-  // get tweets using meteor package, requires keys, set in custom_settings.json
+  // not in use: get tweet stream using meteor package, requires keys, set in custom_settings.json
   getTwitterTweets:function(query){
     var stream = T.stream('statuses/filter', { track: query })
 

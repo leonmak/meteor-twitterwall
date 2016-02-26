@@ -29,3 +29,5 @@ momentjs:moment
 u2622:persistent-session
 isotope:isotope
 mrt:jquery-imagesloaded
+acemtp:meta-extractor
+ls3271:meteor-linkify
