@@ -11,9 +11,13 @@ Template.suggestionList.events({
     var clickId = event.currentTarget.id;
     Session.setPersistent("query", clickId);
     Session.set("noSearchTerm", false);
+    Session.set("gettingTweets", true);
+
     // remove all docs in Tweets Collection
     Meteor.call("clearTweets");
-    Meteor.call("updateTweets", clickId.replace(/ /g, "+"));
+    Meteor.call("updateTweets", clickId.replace(/ /g, "+"), function(){
+        Session.set("gettingTweets", false);
+    });
 
   }
 });

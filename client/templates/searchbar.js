@@ -4,7 +4,7 @@ Template.searchbar.events({
     if (event.which == 13) {
       // stop search bar from refreshing
       event.preventDefault();
-
+Session.set("gettingTweets", true);
       // update the subscription url of the template
       var search = document.getElementById('search').value;
       var qString = search.replace(/ /g, "+");
@@ -20,7 +20,9 @@ Template.searchbar.events({
 
       // remove all docs in Tweets Collection
       Meteor.call("clearTweets");
-      Meteor.call("updateTweets", qString);
+      Meteor.call("updateTweets", qString, function(){
+          Session.set("gettingTweets", false);
+      });
       //
       // // stop the previous autorun computation
       // if(template.comp) template.comp.stop();

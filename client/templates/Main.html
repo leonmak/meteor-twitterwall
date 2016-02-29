@@ -36,8 +36,9 @@
 	</div>
 
   <body>
-
-
+{{#if gettingTweets}}
+{{> loadingTemplate}}
+{{/if}}
           {{> yield}}
 
 

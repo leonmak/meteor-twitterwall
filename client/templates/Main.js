@@ -5,7 +5,10 @@ if (Meteor.isClient) {
 Template.main.helpers({
   query: function(){
     return Session.get("query");
-  }
+},
+gettingTweets: function(){
+    return Session.get("gettingTweets");
+}
 });
 Template.main.rendered = function(){
   $(".button-collapse").sideNav();
