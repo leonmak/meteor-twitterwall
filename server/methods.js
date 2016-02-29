@@ -7,7 +7,7 @@ Meteor.methods({
       var userTweet = tweet.text;
       var tweetDate = tweet.created_at;
       var profileImg = tweet.user.profile_image_url_https;
-      console.log(tweet);
+    //   console.log(tweet);
 
       var imgs = tweet.images;
       var links = tweet.links;
@@ -57,7 +57,7 @@ Meteor.methods({
     SyncedCron.stop();
     // new syncedChron to diff the tweets without adding removing the whole collection
     SyncedCron.add({
-      name: 'Parsing from loklak loklak',
+      name: 'Parsing from loklak for ' + qString,
       schedule: function(parser) {
         return parser.text('every 10 sec');
       },

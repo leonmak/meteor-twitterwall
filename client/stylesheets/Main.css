@@ -58,7 +58,25 @@ a.suggestion {
     height: 21px;
 }
 /* fluid 5 columns */
-.grid-sizer,
-.grid-item { width: 10%; }
+.grid-sizer{
+    width: 5%;
+}
+.grid-item {
+    width: 10%;
+}
 /* 2 columns wide */
 .grid-item--width2 { width: 40%; }
+
+/* tweet */
+/*.hidden{
+    display: none;
+}*/
+.wallTweet {
+    position: absolute;
+    transition: 1s;
+    width: 333%;
+    top: 90%;
+    /* right: 0; */
+    left: -66%;
+    z-index: 1000;
+}

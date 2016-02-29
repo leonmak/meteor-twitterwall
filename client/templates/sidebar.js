@@ -10,7 +10,7 @@ Template.suggestionList.events({
     console.log(event);
     var clickId = event.currentTarget.id;
     Session.setPersistent("query", clickId);
-
+    Session.set("noSearchTerm", false);
     // remove all docs in Tweets Collection
     Meteor.call("clearTweets");
     Meteor.call("updateTweets", clickId.replace(/ /g, "+"));

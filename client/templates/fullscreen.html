@@ -1,37 +1,55 @@
 <template name="fullscreen">
 
-  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-    <a href="{{pathFor 'tweetsList'}}" class="btn-floating btn-large red waves-effect waves-light">
-      <i class="material-icons">view_day</i>
-    </a>
-  </div>
+    <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        <a href="{{pathFor 'tweetsList'}}" class="btn-floating btn-large red waves-effect waves-light">
+            <i class="material-icons">view_day</i>
+        </a>
+    </div>
 
+<div class="container">
 
-  <div class="grid">
-    {{#each gridList}}
-      {{>gridItem}}
-    {{/each}}
-  </div>
+    <div class="grid">
+        {{#each gridList}}
+        {{>gridItem}}
+        {{/each}}
+    </div>
+</div>
 
 
 
 </template>
 
 <template name="gridItem">
-{{#if haveImg}}
-<div class="grid-item grid-item--big">
-  <a href="https://www.twitter.com/{{username}}">
-    <img src="{{userPicture}}" class="circle responsive-img"/>
-  </a>
-</div>
-{{else}}
-<div class="grid-item">
-  <a href="https://www.twitter.com/{{username}}">
-    <img src="{{userPicture}}" class="circle responsive-img"
-onError="this.onerror=null;this.src='https://abs.twimg.com/sticky/default_profile_images/default_profile_6_normal.png';"/>
-  </a>
 
-</div>
-{{/if}}
+
+
+
+    <div class="grid-item">
+        {{#if showTweet}}
+        <div class="row wallTweet" >
+            <div class="col s12 m7">
+                <div class="card">
+                    <!-- {{#if haveImg}}
+                    <div class="card-image">
+                        <img src="{{image}}">
+                    </div>
+                    {{/if}} -->
+                    <div class="card-content">
+                        <p class="black-text">
+                            {{{tweetLink}}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+
+        <a  class="wallPic" href="https://www.twitter.com/{{username}}">
+            <img src="{{userPicture}}" class="circle responsive-img"
+            onError="this.onerror=null;this.src='https://abs.twimg.com/sticky/default_profile_images/default_profile_6_normal.png';"/>
+        </a>
+
+    </div>
+
 
 </template>
