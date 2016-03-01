@@ -20,15 +20,24 @@ Template.tweetsItem.helpers({
 Template.tweetsItem.rendered = function(){
     Session.set("gettingTweets", false);
 
-    $(document).ready(function(){
+    // $(document).ready(function(){
         $('.materialboxed').materialbox();
         $('.black-text').linkify({
             format: function (value, type) {
-                if (type === 'url' && value.length > 50) {
-                    value = value.slice(0, 50) + '…';
+                if (type === 'url' && value.length > 30) {
+                    value = value.slice(0, 30) + '…';
                 }
                 return value;
             }
         });
-    });
+    // });
 }
+
+Template.tweetsItem.events({
+    "mouseenter .card-panel": function(event, template){
+        template.$('.materialboxed').materialbox();
+    },
+    "mouseleave .card-panel": function(event, template){
+        $("#materialbox-overlay").remove();
+    }
+});
