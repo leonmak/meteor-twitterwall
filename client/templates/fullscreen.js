@@ -11,7 +11,7 @@ Template.fullscreen.rendered = function(){
     percentPosition: true,
     columnWidth: '.grid-sizer'
     })
-
+    Session.set("gridInit", true);
   $s.imagesLoaded().progress( function() {
     $s.isotope('layout');
   });
@@ -24,7 +24,7 @@ Template.fullscreen.onCreated(function () {
   $("#nav-mobile").addClass("out");
 });
 
-
+/* GRID ITEM */
 Template.gridItem.helpers({
     tweetLink: function(){
         // replace twitter handles with links
@@ -40,8 +40,20 @@ Template.gridItem.helpers({
 })
 
 Template.gridItem.rendered = function(){
+    if(Session.get("gridInit")){
+        var $grid = $('.grid');
+        var $s = $grid.isotope({
+          itemSelector: '.grid-item',
+          percentPosition: true,
+          columnWidth: '.grid-sizer'
+          })
+        $s.imagesLoaded().progress( function() {
+          $s.isotope('layout');
+        });
+        $('.grid').isotope('reloadItems');
 
-        console.log($('.black-text'));
+    };
+        // console.log($('.black-text'));
 
         $('.black-text').linkify({
             format: function (value, type) {
@@ -57,7 +69,7 @@ Template.gridItem.rendered = function(){
 Template.gridItem.events({
     "mouseenter .wallPic": function(event, template){
         Session.set("showTweet", this._id);
-        console.log(this._id);
+        // console.log(this._id);
 
         // console.log($(event.target.id));
         // $("#" + event.target.id).removeClass("hidden");

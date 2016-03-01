@@ -19,7 +19,7 @@ Template.tweetsItem.helpers({
 
 Template.tweetsItem.rendered = function(){
     Session.set("gettingTweets", false);
-    
+
     $(document).ready(function(){
         $('.materialboxed').materialbox();
         $('.black-text').linkify({
