@@ -41,7 +41,7 @@ Template.gridItem.helpers({
 })
 
 Template.gridItem.rendered = function(){
-    $('.black-text').linkify({
+    $('p.black-text').linkify({
         format: function (value, type) {
             if (type === 'url' && value.length > 50) {
                 value = value.slice(0, 50) + '…';

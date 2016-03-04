@@ -1,5 +1,6 @@
 Template.modal.rendered = function(){
     $('.modal-trigger').leanModal();
+    $('.materialboxed').materialbox();
     $('#modal1').openModal();
 };
 
@@ -15,7 +16,7 @@ Template.modal.helpers({
     },
     displayImgs: function(){
         if(this.image){
-            return "<img class=\"materialboxed responsive-img\" width=\"auto\" data-caption=\"" +this.tweet +"\" src="+ this.image +">";
+            return "<img class=\"materialboxed responsive-img\" width=\"auto\" src="+ this.image +">";
         }
     },
     tweetLink: function(){

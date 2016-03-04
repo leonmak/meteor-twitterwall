@@ -124,3 +124,7 @@ a.suggestion {
 .row.content {
     margin-left: 3%;
 }
+
+img.responsive-img, video.responsive-video{
+    max-height: 500px;
+}

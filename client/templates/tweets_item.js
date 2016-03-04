@@ -4,10 +4,11 @@ Template.tweetsItem.helpers({
     },
     displayImgs: function(){
         if(this.image){
-            return "<img class=\"materialboxed responsive-img\" width=\"auto\" data-caption=\"" +this.tweet +"\" src="+ this.image +">";
+            return "<img class=\"materialboxed responsive-img\" width=\"auto\" src="+ this.image +">";
         }
     },
     tweetLink: function(){
+
         // replace twitter handles with links
         var re = /@(\w+)/g;
         function replacer(match, p1){
@@ -22,6 +23,7 @@ Template.tweetsItem.rendered = function(){
 
     // $(document).ready(function(){
         $('.materialboxed').materialbox();
+        // $('.material-placeholder').remove();
         $('p.black-text').linkify({
             format: function (value, type) {
                 if (type === 'url' && value.length > 30) {
