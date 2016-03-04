@@ -93,3 +93,29 @@ a.suggestion {
 .progress .indeterminate {
     background-color: #A62626;
 }
+
+/*possible fix for bottom mouseovers*/
+/*
+.content {
+    min-height: calc(100vh - 120px);
+
+}*/
+.modal-img{
+    height: auto;
+    width: 100%;
+}
+
+
+.modal {
+    background-color: rgba(49, 49, 49, 0.91);
+    border-radius: 21px;
+}
+
+.modal-toggle{
+    position: fixed;
+    right: 23px;
+    bottom: 110px;
+    padding-top: 15px;
+    margin-bottom: 0;
+    z-index: 998;
+}

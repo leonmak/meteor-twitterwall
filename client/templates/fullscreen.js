@@ -22,6 +22,7 @@ Template.fullscreen.rendered = function(){
 Template.fullscreen.onCreated(function () {
   $(".fixed-action-btn").fadeOut();
   $("#nav-mobile").addClass("out");
+  Session.set('tweetLimit', 50);
 });
 
 /* GRID ITEM */
@@ -40,6 +41,15 @@ Template.gridItem.helpers({
 })
 
 Template.gridItem.rendered = function(){
+    $('.black-text').linkify({
+        format: function (value, type) {
+            if (type === 'url' && value.length > 50) {
+                value = value.slice(0, 50) + '…';
+            }
+            return value;
+        }
+    });
+
     if(Session.get("gridInit")){
         var $grid = $('.grid');
         var $s = $grid.isotope({
@@ -55,14 +65,6 @@ Template.gridItem.rendered = function(){
     };
         // console.log($('.black-text'));
 
-        $('.black-text').linkify({
-            format: function (value, type) {
-                if (type === 'url' && value.length > 50) {
-                    value = value.slice(0, 50) + '…';
-                }
-                return value;
-            }
-        });
 
 }
 

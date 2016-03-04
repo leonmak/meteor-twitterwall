@@ -22,7 +22,7 @@ Template.tweetsItem.rendered = function(){
 
     // $(document).ready(function(){
         $('.materialboxed').materialbox();
-        $('.black-text').linkify({
+        $('p.black-text').linkify({
             format: function (value, type) {
                 if (type === 'url' && value.length > 30) {
                     value = value.slice(0, 30) + '…';

@@ -40,7 +40,7 @@ Template.tweetsList.onCreated(function () {
 	$(".fixed-action-btn").fadeIn();
 	$("#nav-mobile").removeClass("out");
 
-	Session.set('tweetLimit', 90);
+	Session.set('tweetLimit', 50);
 // 	var self = this;
 // 	var apiURLSettings = Meteor.settings.public.apiURL; // localhost:9000/api
 // console.log(apiURLSettings);
