@@ -22,7 +22,7 @@ Template.fullscreen.rendered = function(){
 Template.fullscreen.onCreated(function () {
   $(".fixed-action-btn").fadeOut();
   $("#nav-mobile").addClass("out");
-  Session.set('tweetLimit', 50);
+  Session.set('tweetLimit', 60);
 });
 
 /* GRID ITEM */
@@ -77,7 +77,7 @@ Template.gridItem.events({
         // $("#" + event.target.id).removeClass("hidden");
     },
     "mouseleave .wallPic": function(event, template){
-        // Session.set("showTweet", "");
+        Session.set("showTweet", "");
         // $("#"+event.target.id).addClass("hidden");
     }
 });

@@ -19,19 +19,18 @@ Template.modal.helpers({
         }
     },
     tweetLink: function(){
-        // replace twitter handles with links
+        // linkify
         var urlRegex = /[^"]((http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?)+/g;
         function urlReplacer (match, p1){
             var shortened = p1.length > 30 ? p1.substring(0, 30)+"..." : p1;
             return "<a href=\"" + p1 + "\">" + shortened + "</a>";
         }
-
+        // replace twitter handles with links
         var re = /@(\w+)/g;
         function replacer(match, p1){
             return "<a href=\"https://twitter.com/" + p1 + "\">@" + p1 + "</a>";
         }
         var str = this.tweet.replace(urlRegex, urlReplacer);
-        console.log(str);
 
         return str.replace(re, replacer);
     }

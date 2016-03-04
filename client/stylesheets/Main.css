@@ -59,10 +59,10 @@ a.suggestion {
 }
 /* fluid 5 columns */
 .grid-sizer{
-    width: 5%;
+    width: 25%;
 }
 .grid-item {
-    width: 10%;
+    width: 8%;
 }
 /* 2 columns wide */
 .grid-item--width2 { width: 40%; }
@@ -102,11 +102,12 @@ a.suggestion {
 }*/
 .modal-img{
     height: auto;
-    width: 100%;
+    width: 90%;
 }
 
 
 .modal {
+    top:calc(100vh - 75%) !important;
     background-color: rgba(49, 49, 49, 0.91);
     border-radius: 21px;
 }
@@ -118,4 +119,8 @@ a.suggestion {
     padding-top: 15px;
     margin-bottom: 0;
     z-index: 998;
+}
+
+.row.content {
+    margin-left: 3%;
 }
